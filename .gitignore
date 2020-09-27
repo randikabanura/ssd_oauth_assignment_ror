@@ -34,3 +34,13 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+/.idea/.generators
+/.idea/.gitignore
+/.idea/.rakeTasks
+/.rakeTasks
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/railways.cache
+/.idea/ssd_oauth_assignment_ror.iml
+/.idea/vcs.xml
