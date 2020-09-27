@@ -17,6 +17,10 @@ module Users
       handle_auth "Github"
     end
 
+    def google_oauth2
+      handle_auth "Google"
+    end
+
     private
 
     def handle_auth(kind)
@@ -65,13 +69,14 @@ module Users
           expires_at: expires_at,
           access_token: auth.credentials.token,
           access_token_secret: auth.credentials.secret,
+          refresh_token: auth.credentials.refresh_token
       }
     end
 
     def create_user
       User.create(
         email: auth.info.email,
-        #name: auth.info.name,
+        name: auth.info.name,
         password: Devise.friendly_token[0,20]
       )
     end

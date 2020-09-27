@@ -71,3 +71,8 @@ gem 'redis', '~> 4.2', '>= 4.2.2'
 gem 'sidekiq', '~> 6.0', '>= 6.0.3'
 gem 'sitemap_generator', '~> 6.1', '>= 6.1.2'
 gem 'whenever', require: false
+gem 'omniauth-google-oauth2'
+gem 'dotenv-rails'
+gem 'google-api-client'
+gem 'simple_calendar', '~> 2.4', '>= 2.4.1'
+gem 'httparty'

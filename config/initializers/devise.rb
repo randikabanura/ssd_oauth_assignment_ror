@@ -24,7 +24,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = 'devise@example.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -274,7 +274,7 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
   env_creds = Rails.application.credentials[Rails.env.to_sym] || {}
-    %i{ facebook twitter github }.each do |provider|
+    %i{ facebook twitter github google_oauth2}.each do |provider|
       if options = env_creds[provider]
         config.omniauth provider, options[:app_id], options[:app_secret], options.fetch(:options, {})
       end
