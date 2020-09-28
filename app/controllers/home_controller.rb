@@ -38,6 +38,22 @@ class HomeController < ApplicationController
   def privacy
   end
 
+  def remove_subscription
+    redirect_to root_path unless current_user.present?
+
+    channel_id = params[:id]
+    client = get_youtube_client current_user
+
+    begin
+      client.delete_subscription(channel_id)
+      flash[:success] = 'Subscription deletion was successful'
+      redirect_to root_path
+    rescue => e
+      flash[:error] = 'Subscription deletion was unsuccessful'
+      redirect_to root_path
+    end
+  end
+
   private
 
   def get_youtube_client(current_user)

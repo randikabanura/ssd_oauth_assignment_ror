@@ -16,7 +16,6 @@
     <tbody>
     <% @subscription_list.each_with_index do |subscription, index| %>
     <% channel_id = subscription.snippet.resource_id.channel_id %>
-      <% #byebug %>
     <tr>
       <th scope="row"><%= index + 1 %></th>
       <th><%= image_tag(subscription.snippet.thumbnails.default.url) %></th>
@@ -24,7 +23,7 @@
       <td><%= truncate(subscription.snippet.description, length: 150) %></td>
       <td><%= @channels_list[@channels_list.map(&:id).index(channel_id)].statistics.video_count %></td>
       <td><%= @channels_list[@channels_list.map(&:id).index(channel_id)].statistics.subscriber_count %></td>
-      <td><%=  %></td>
+      <td><%= link_to("Remove subscription", remove_subscription_path(id: subscription.id), method: :delete) %></td>
     </tr>
     <% end %>
     </tbody>
