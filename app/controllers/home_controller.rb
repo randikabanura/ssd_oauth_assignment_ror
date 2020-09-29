@@ -26,6 +26,9 @@ class HomeController < ApplicationController
 
         channel_ids = @subscription_list.map(&:snippet).map(&:resource_id).map(&:channel_id)
         @channels_list = client.list_channels('snippet, statistics', id: channel_ids).items
+
+        @my_liked_videos = client.list_videos('snippet,contentDetails,statistics', my_rating: 'like').items
+        @my_disliked_videos = client.list_videos('snippet,contentDetails,statistics', my_rating: 'dislike').items
       rescue => e
         sign_out(current_user)
       end
@@ -54,7 +57,31 @@ class HomeController < ApplicationController
     end
   end
 
+  def video_search
+    if request.post?
+      video_url = params[:youtube_video][:youtube_url]
+      video_id = get_youtube_id(video_url)
+
+      redirect_to video_search_view_path(video_id: video_id)
+    else
+      video_id = params[:video_id]
+
+      client = get_youtube_client current_user
+      @video = client.list_videos('contentDetails, snippet, statistics, status', id: video_id).items.first
+    end
+  end
+
   private
+
+  def get_youtube_id(youtube_url)
+    regex = /(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
+    match = regex.match(youtube_url)
+    if match && !match[1].blank?
+      match[1]
+    else
+      nil
+    end
+  end
 
   def get_youtube_client(current_user)
     client = Google::Apis::YoutubeV3::YouTubeService.new

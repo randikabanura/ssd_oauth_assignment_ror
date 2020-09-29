@@ -13,5 +13,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks", registrations: 'users/registrations' }
   root to: 'home#index'
   delete 'remove_subscription/:id', to: 'home#remove_subscription', as: :remove_subscription
+  post 'video', to: 'home#video_search', as: :video_search
+  get 'video/:video_id', to: 'home#video_search', as: :video_search_view
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

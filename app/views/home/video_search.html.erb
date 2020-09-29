@@ -1,0 +1,37 @@
+<div class="container">
+  <% #byebug %>
+  <h1 class="col-12"><%= @video.snippet.title %></h1>
+  <%= image_tag(@video.snippet.thumbnails.high.url, class: 'col-12') %>
+
+  <div class="mt-2">
+    <div class="snippet d-flex flex-row flex-wrap">
+      <h3 class="col-12">Snippet Details</h3>
+      <p class="col-3">Channel Name:</p>
+      <p class="col-9"><%= @video.snippet.channel_title %></p>
+      <p class="col-3">Description:</p>
+      <p class="col-9"><%= @video.snippet.description %></p>
+    </div>
+    <div class="content-details d-flex flex-row flex-wrap">
+      <h3 class="col-12">Content Details</h3>
+      <p class="col-3">Duration:</p>
+      <p class="col-9"><%= ActiveSupport::Duration.parse(@video.content_details.duration).to_s %></p>
+      <p class="col-3">Dimension:</p>
+      <p class="col-9"><%= @video.content_details.dimension %></p>
+      <p class="col-3">Definition:</p>
+      <p class="col-9"><%= @video.content_details.definition %></p>
+    </div>
+    <div class="statistics d-flex flex-row flex-wrap">
+      <h3 class="col-12">Statistics</h3>
+      <p class="col-3">View Count:</p>
+      <p class="col-9"><%= @video.statistics.view_count %></p>
+      <p class="col-3">Like Count:</p>
+      <p class="col-9"><%= @video.statistics.like_count %></p>
+      <p class="col-3">Dislike Count:</p>
+      <p class="col-9"><%= @video.statistics.dislike_count %></p>
+      <p class="col-3">Favorite Count:</p>
+      <p class="col-9"><%= @video.statistics.favorite_count %></p>
+      <p class="col-3">Comment Count:</p>
+      <p class="col-9"><%= @video.statistics.comment_count %></p>
+    </div>
+  </div>
+</div>

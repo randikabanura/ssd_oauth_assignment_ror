@@ -1,4 +1,18 @@
 <% if current_user.present? %>
+  <div class="search-video mb-5">
+    <h1>Search Video</h1>
+    <p class="lead">You can search video from here.</p>
+    <%= form_for :youtube_video, url: video_search_path do |f| %>
+      <div class="input-group mb-3">
+        <%= f.text_field :youtube_url, class: 'form-control', placeholder: "Video URL" %>
+<!--        <input type="text" class="form-control"  aria-label="Recipient's username" aria-describedby="basic-addon2">-->
+        <div class="input-group-append">
+          <%= f.submit 'Search', class: 'btn btn-outline-secondary' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="subscription-list mb-5">
   <h1>Subscription List</h1>
   <p class="lead">Your subscriptions are listed here.</p>
   <table class="table table-hover table-bordered">
@@ -18,7 +32,7 @@
     <% channel_id = subscription.snippet.resource_id.channel_id %>
     <tr>
       <th scope="row"><%= index + 1 %></th>
-      <th><%= image_tag(subscription.snippet.thumbnails.default.url) %></th>
+      <th><%= image_tag(@channels_list[@channels_list.map(&:id).index(channel_id)].snippet.thumbnails.default.url) %></th>
       <td><%= subscription.snippet.title %></td>
       <td><%= truncate(subscription.snippet.description, length: 150) %></td>
       <td><%= @channels_list[@channels_list.map(&:id).index(channel_id)].statistics.video_count %></td>
@@ -35,8 +49,35 @@
   <% if @next_page_token.present? %>
     <%= link_to "Next Page", root_path(next_page_token: @next_page_token) %>
   <% end %>
+  </div>
+  <div class="liked-videos mb-5">
+    <h1>Your Liked Videos</h1>
+    <p class="lead">You view liked videos from here.</p>
+
+    <div class="liked-videos-section d-flex justify-content-between">
+    <% @my_liked_videos.each do |liked_video| %>
+      <div class="video-box">
+        <%= image_tag(liked_video.snippet.thumbnails.default.url) %>
+        <p style="max-width: 120px;"><%= liked_video.snippet.title %></p>
+      </div>
+    <% end %>
+    </div>
+  </div>
+  <div class="disliked-videos mb-5">
+    <h1>Your Disliked Videos</h1>
+    <p class="lead">You view disliked videos from here.</p>
+
+    <div class="disliked-videos-section d-flex justify-content-between">
+      <% @my_disliked_videos.each do |disliked_video| %>
+        <div class="video-box">
+          <%= image_tag(disliked_video.snippet.thumbnails.default.url) %>
+          <p style="max-width: 120px;"><%= disliked_video.snippet.title %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
 <% else %>
-  <h1>Welcome to Jumpstart!</h1>
+  <h1>Welcome to My Youtube Patrol!</h1>
   <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly
     barebones HTML document.</p>
 <% end %>
