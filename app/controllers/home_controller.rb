@@ -62,12 +62,22 @@ class HomeController < ApplicationController
       video_url = params[:youtube_video][:youtube_url]
       video_id = get_youtube_id(video_url)
 
-      redirect_to video_search_view_path(video_id: video_id)
+      if video_id.blank?
+        flash[:error] = 'Youtube url was incorrect'
+        redirect_to root_path
+      else
+        redirect_to video_search_view_path(video_id: video_id)
+      end
     else
       video_id = params[:video_id]
 
       client = get_youtube_client current_user
       @video = client.list_videos('contentDetails, snippet, statistics, status', id: video_id).items.first
+
+      if @video.blank?
+        flash[:error] = 'Youtube url was incorrect'
+        redirect_to root_path
+      end
     end
   end
 

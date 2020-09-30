@@ -51,7 +51,9 @@
   <% end %>
   </div>
   <div class="liked-videos mb-5">
-    <h1>Your Liked Videos</h1>
+    <h1>Your Liked Videos
+      <%= link_to('View All', videos_liked_videos_path, class: 'btn btn-primary') %>
+    </h1>
     <p class="lead">You view liked videos from here.</p>
 
     <div class="liked-videos-section d-flex justify-content-between">
@@ -64,7 +66,9 @@
     </div>
   </div>
   <div class="disliked-videos mb-5">
-    <h1>Your Disliked Videos</h1>
+    <h1>Your Disliked Videos
+      <%= link_to('View All', videos_disliked_videos_path, class: 'btn btn-primary') %>
+    </h1>
     <p class="lead">You view disliked videos from here.</p>
 
     <div class="disliked-videos-section d-flex justify-content-between">

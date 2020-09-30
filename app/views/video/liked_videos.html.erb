@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Your Liked Videos</h1>
+  <p class="lead">You view liked videos from here.</p>
+
+  <% @my_liked_videos.each do |liked_video| %>
+    <div class="row pb-4">
+      <%= image_tag(liked_video.snippet.thumbnails.medium.url) %>
+      <div class="col">
+        <h5><%= liked_video.snippet.title %></h5>
+        <h6><%= liked_video.snippet.channel_title %></h6>
+        <p><%= truncate(liked_video.snippet.description, length: 250) %></p>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -15,5 +15,8 @@ Rails.application.routes.draw do
   delete 'remove_subscription/:id', to: 'home#remove_subscription', as: :remove_subscription
   post 'video', to: 'home#video_search', as: :video_search
   get 'video/:video_id', to: 'home#video_search', as: :video_search_view
+
+  get 'videos/liked_videos', to: 'video#liked_videos'
+  get 'videos/disliked_videos', to: 'video#disliked_videos'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

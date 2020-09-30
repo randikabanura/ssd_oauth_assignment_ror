@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Your Disliked Videos</h1>
+  <p class="lead">You view disliked videos from here.</p>
+
+  <% @my_disliked_videos.each do |disliked_video| %>
+    <div class="row pb-4">
+      <%= image_tag(disliked_video.snippet.thumbnails.medium.url) %>
+      <div class="col">
+        <h5><%= disliked_video.snippet.title %></h5>
+        <h6><%= disliked_video.snippet.channel_title %></h6>
+        <p><%= truncate(disliked_video.snippet.description, length: 250) %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
