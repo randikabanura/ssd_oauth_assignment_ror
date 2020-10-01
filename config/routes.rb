@@ -18,5 +18,6 @@ Rails.application.routes.draw do
 
   get 'videos/liked_videos', to: 'video#liked_videos'
   get 'videos/disliked_videos', to: 'video#disliked_videos'
+  get 'videos/subscriptions', to: 'video#my_subscriptions'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -2,6 +2,7 @@ require "google/apis/youtube_v3"
 require "google/api_client/client_secrets.rb"
 
 class VideoController < ApplicationController
+  before_action :authenticate_user!
 
   def liked_videos
     if current_user.present?
@@ -21,6 +22,25 @@ class VideoController < ApplicationController
         redirect_to root_path
       end
     else
+      redirect_to root_path
+    end
+  end
+
+  def my_subscriptions
+    client = get_youtube_client current_user
+    @my_subscriptions = []
+
+    subscription_call = client.list_subscriptions('snippet,contentDetails', mine: true)
+    while subscription_call&.next_page_token.present?
+      @my_subscriptions << subscription_call.items
+      subscription_call = client.list_subscriptions('snippet,contentDetails', mine: true, page_token: subscription_call&.next_page_token)
+    end
+    @my_subscriptions.flatten!
+    channel_ids = @subscription_list.map(&:snippet).map(&:resource_id).map(&:channel_id)
+    @channels_list = client.list_channels('snippet, statistics', id: channel_ids).items
+
+    if @my_subscriptions.blank?
+      flash[:error] = 'You does not have any subscriptions'
       redirect_to root_path
     end
   end
