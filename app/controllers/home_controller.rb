@@ -72,7 +72,7 @@ class HomeController < ApplicationController
       video_id = params[:video_id]
 
       client = get_youtube_client current_user
-      @video = client.list_videos('contentDetails, snippet, statistics, status', id: video_id).items.first
+      @video = client.list_videos('contentDetails, snippet, statistics, status, recordingDetails', id: video_id).items.first
 
       if @video.blank?
         flash[:error] = 'Youtube url was incorrect'
