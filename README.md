@@ -125,7 +125,7 @@ $ gem install bundler
 
 #### Install Rails
 
-Use the following command for installing Rails version 4.2.4.
+Use the following command for installing Rails version 6.0.3.
 
 *Note: Please use rails version 6.0.3 for this application.*
 
