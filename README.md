@@ -35,9 +35,13 @@ Follow the download link, and run the resulting installer. This is an exe file r
 It's a very small package, and you'll get RubyGems as well along with this package.
 Please check the Release Notes for more detail.
 
+*Note: Please use ruby version 2.7.1 for this application.*
+
 #### Install Rails
 
 With Rubygems loaded, you can install all of Rails and its dependencies using the following command through the command line:
+
+*Note: Please use rails version 6.0.3 for this application.*
 
 ```
 > gem install rails
@@ -99,6 +103,8 @@ $ exec $SHELL
 Before installing Ruby, determine which version of Ruby you want to install. We will install Ruby 2.7.1.
 Use the following command for installing Ruby.
 
+*Note: Please use ruby version 2.7.1 for this application.*
+
 ```
 $ rbenv install -v 2.7.1
 
@@ -120,6 +126,8 @@ $ gem install bundler
 #### Install Rails
 
 Use the following command for installing Rails version 4.2.4.
+
+*Note: Please use rails version 6.0.3 for this application.*
 
 ```
 $ install rails -v 6.0.3
