@@ -17,6 +17,7 @@ using OAuth 2.0 framework.
 - Show user's youtube profile details
 - Search youtube video by url and show normal and technical details
 - Remove subscriptions from the channels user currently subscribed to
+- You can view live deployed version of the application by clicking [here](https://desolate-meadow-86023.herokuapp.com/).
 
 ## Screenshots
 ![screenshot login_page](images/screenshot_login_page.png "Login Page for Google OAuth 2.0")
@@ -163,7 +164,7 @@ Please change the password of the **postgres** user or create new user with
 
 All of the authentication details with the google OAuth2.0 in the credentials file.
 Nevertheless with the ```master.key``` to open the credentials file this does not work.
-Please add the credentials details that specified in the report.
+Please add the credentials details as specified in the report by creating the ```master.key``` file.
 
 You can edit the credentials file by a terminal in the application path with the following command:
 ```
