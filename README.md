@@ -5,12 +5,6 @@ and can be used to view your youtube statistics in one place. You can
 login from a youtube enabled gmail account to access the application
 using OAuth 2.0 framework.
 
-<p>
-  <img src="https://api.codeclimate.com/v1/badges/80f9e1a7c72d186289ad/maintainability" alt="Maintainability">
-  <img src="https://img.shields.io/circleci/build/github/chatwoot/chatwoot" alt="CircleCI Badge">
-  <img src="https://img.shields.io/github/license/chatwoot/chatwoot" alt="License">
-</p>
-
 ## Features
 
 - OAuth2.0 framework authorization using Google
