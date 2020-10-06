@@ -11,6 +11,13 @@ using OAuth 2.0 framework.
   <img src="https://img.shields.io/github/license/chatwoot/chatwoot" alt="License">
 </p>
 
+## Features
+
+- OAuth2.0 framework authorization using Google
+- Show user's youtube profile details
+- Search youtube video by url and show normal and technical details
+- Remove subscriptions from the channels user currently subscribed to
+
 ## Screenshots
 ![screenshot login_page](images/screenshot_login_page.png "Login Page for Google OAuth 2.0")
 
@@ -73,7 +80,7 @@ First of all, we have to install git - core and some ruby dependencies that help
 Use the following command for installing Rails dependencies using yum.
 
 ```
-> sudo yum install -y git-core zlib zlib-devel gcc-c++ patch readline readline-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison curl sqlite-devel
+$ sudo yum install -y git-core zlib zlib-devel gcc-c++ patch readline readline-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison curl sqlite-devel
 ```
 
 ####  Install rbenv
